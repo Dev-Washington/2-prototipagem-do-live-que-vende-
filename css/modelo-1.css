@@ -1,0 +1,68 @@
+.m1 { background: var(--escuro-base); }
+
+.m1 .sala-real {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  transform: translateZ(0);
+}
+
+.m1 .sala-real .tela {
+  min-height: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.m1 .sala-real .tela-vitrine-clara,
+.m1 .sala-real .tela-entrada-arroba {
+  max-width: min(100%, 390px);
+  min-height: 100%;
+}
+
+.m1 .sala-real .sheet { max-height: 86%; }
+
+.m1 .sala-real .tela-de-pedidos { position: absolute; }
+
+.m1 .sala-real .tela-entrada-arroba .cabecalho-da-loja {
+  width: var(--celular-larg);
+  margin: 0 calc(50% - var(--celular-larg) / 2);
+}
+
+.m1 .sala-real .contador-da-sacola {
+  right: max(14px, calc((var(--celular-larg) - 390px) / 2 + 14px));
+}
+
+/* ATENÇÃO: daqui para baixo NÃO é o app — são correções só da moldura. */
+.m1 .sala-real .tela-vitrine-clara .selo-do-destaque {
+  position: static;
+  max-width: none;
+  align-self: stretch;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 3px 8px;
+  font-size: 9.5px;
+  line-height: 1.35;
+  background: rgba(17, 17, 17, .82);
+}
+
+.m1 .sala-real .qr-de-exemplo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  text-align: center;
+  background: #fff;
+  color: #6b6b7a;
+  border: 1px dashed #dce3ed;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 700;
+}
+.m1 .sala-real .qr-de-exemplo small { font-weight: 400; font-size: 11px; max-width: 78%; }

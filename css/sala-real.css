@@ -1,0 +1,3153 @@
+/* ===========================================================================
+   CSS REAL da Sala da Live: gerado de apps/sala/src/estilos.css do repositório
+   GSoaresTech/livequevende e apenas ESCOPADO em .sala-real, para o estilo do
+   app não vazar na página de apresentação.
+   NÃO EDITAR À MÃO: quando o app mudar, regerar reaplicando o prefixo.
+   =========================================================================== */
+
+/* Tokens do GUIA_DESIGN §2 — nenhuma cor, espaço ou raio fora daqui. */
+.sala-real {
+  --bg-base: #0b0b0f;
+  --bg-surface: #16161d;
+  --bg-elevated: #1f1f28;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #a1a1b0;
+  --text-muted: #6b6b7a;
+  --brand-primary: #ec4899;
+  --brand-primary-pressed: #db2777;
+  --brand-gradient-end: #b044e5;
+  /* Só como parada de gradiente, nunca como texto, fundo, borda ou
+     ação sozinha (GUIA §2.1.1). */
+  --brand-accent-terracota: #d97757;
+  --brand-soft: #ffe1f3;
+  --brand-softest: #fff7fd;
+  --brand-soft-strong: #f8c9ea;
+  --brand-soft-border: #f4addd;
+  --brand-placeholder: #e69dcb;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
+  --info: #3b82f6;
+}
+
+.sala-real, .sala-real * {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.sala-real {
+  min-width: 100%;
+  min-height: 100%;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  /* Pilha de sistema: a MESMA fonte que o Instagram renderiza no
+     aparelho — continuidade perfeita e zero webfont (GUIA §2.4). */
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.sala-real #root {
+  min-height: 100dvh;
+  background: inherit;
+}
+
+.sala-real.fundo-vitrine-clara {
+  background: #ffffff;
+}
+
+.sala-real.fundo-entrada-arroba {
+  background: #ffffff;
+  /* A faixa do cabeçalho mede 100vw, e 100vw conta a barra de rolagem:
+     sem isto sobra uma rolagem lateral de alguns pixels. */
+  overflow-x: hidden;
+}
+
+.sala-real button {
+  font: inherit;
+  border: 0;
+  cursor: pointer;
+  background: none;
+  color: inherit;
+}
+
+.sala-real input {
+  font: inherit;
+  /* Nunca menos de 16px em campo de texto: evita o zoom do iOS (§2.4). */
+  font-size: 16px;
+}
+
+.sala-real .tela {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 16px;
+  padding-bottom: 96px;
+}
+
+.sala-real .cabecalho-da-loja {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0 16px;
+}
+
+.sala-real .avatar-da-loja {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-gradient-end));
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.sala-real .botao-do-avatar {
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.sala-real .botao-do-avatar:focus-visible {
+  outline: 3px solid rgba(236, 72, 153, 0.28);
+  outline-offset: 3px;
+}
+
+.sala-real .nome-da-loja {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Só no cabeçalho da Sala, que é onde o selo de verificada entra ao lado
+   do nome. A tela de pedidos usa a mesma classe e não tem selo: solto, o
+   `inline-flex` encolhia o nome e puxava a linha de baixo para o lado. */
+.sala-real .cabecalho-da-loja .nome-da-loja {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Escudo no rosa da marca, e não círculo azul com certo: à direita do
+   nome, num aparelho que acabou de sair do Instagram, aquele desenho tem
+   um dono só, e a §9 do guia proíbe implicar endosso deles. O quadrado
+   arredondado é o que sobra sem suporte a máscara, e é proposital. */
+.sala-real .selo-de-verificada {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  background: var(--brand-primary);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z'/%3E%3Cpath d='m9 12 2 2 4-4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .selo-de-privacidade {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+/* ---- Entrada (1 campo + 1 botão, nada mais — GUIA §8) ---- */
+.sala-real .entrada {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  flex: 1;
+}
+
+.sala-real .titulo-da-entrada {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.sala-real .apoio-da-entrada {
+  color: var(--text-secondary);
+}
+
+.sala-real .campo {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  color: var(--text-primary);
+  padding: 14px 16px;
+}
+
+.sala-real .campo::placeholder {
+  color: var(--text-muted);
+}
+
+.sala-real .rotulo-do-campo {
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ---- Botões (GUIA §4.1) ---- */
+/* Tom pressionado no repouso: branco sobre `--brand-primary` mede 3,53:1,
+   abaixo do AA que a §10 exige. O pressionado dá 4,60:1. */
+.sala-real .botao-primario {
+  width: 100%;
+  height: 48px;
+  border-radius: 9999px;
+  background: var(--brand-primary-pressed);
+  color: #fff;
+  font-weight: 600;
+  transition: filter 120ms ease-out;
+}
+
+/* O toque escurece por `filter`, e não trocando de cor: o repouso já é o
+   tom mais escuro que temos, e sem isto o toque deixaria de dar retorno
+   (§3.4). O filtro também vale para quem sobrescreve o fundo. */
+.sala-real .botao-primario:active {
+  filter: brightness(0.9);
+}
+
+.sala-real .botao-primario:disabled {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+.sala-real .motivo-do-botao {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.sala-real .botao-discreto {
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 12px;
+  min-height: 44px;
+}
+
+/* Botão de ação secundária: mesma forma do primário, sem o peso da cor
+   de marca (a marca é a cor de ação principal, regra 90/9/1 do GUIA). */
+.sala-real .botao-secundario {
+  width: 100%;
+  height: 48px;
+  border-radius: 9999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* ---- Pagamento (S4.1/S4.2) ---- */
+.sala-real .fundo-do-pagamento {
+  background:
+    linear-gradient(135deg, rgba(131, 58, 180, 0.64) 0%, rgba(225, 48, 108, 0.58) 50%, rgba(253, 29, 29, 0.32) 100%),
+    rgba(0, 0, 0, 0.34);
+}
+
+.sala-real .sheet-de-pagamento {
+  background: #ffffff;
+  color: #111111;
+  padding: 14px 8px calc(16px + env(safe-area-inset-bottom));
+}
+
+.sala-real .cabecalho-do-pagamento {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 6px 10px;
+}
+
+.sala-real .cabecalho-do-pagamento .titulo-da-sheet {
+  margin: 0;
+  color: #111111;
+  font-size: 18px;
+  line-height: 1.15;
+}
+
+.sala-real .cabecalho-do-pagamento .fechar-sheet {
+  width: 42px;
+  height: 42px;
+  color: #111111;
+  font-size: 18px;
+}
+
+.sala-real .escolha-de-pagamento,
+.sala-real .formulario-do-cartao {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sala-real .formulario-do-cartao {
+  margin-top: 2px;
+  padding: 12px;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  background:
+    linear-gradient(#ffffff, #fff8fc) padding-box,
+    linear-gradient(135deg, #f58529 0%, #dd2a7b 38%, #8134af 72%, #515bd4 100%) border-box;
+  box-shadow: 0 10px 26px rgba(221, 42, 123, 0.12);
+}
+
+.sala-real .formulario-do-cartao::before {
+  content: "Dados do cartão";
+  display: block;
+  margin-bottom: 2px;
+  color: #111827;
+  font-size: 15px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.sala-real .formulario-do-cartao .campo {
+  width: 100%;
+  min-height: 50px;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(245, 133, 41, 0.55), rgba(221, 42, 123, 0.55), rgba(129, 52, 175, 0.55)) border-box;
+  color: #111111;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(17, 24, 39, 0.06);
+}
+
+.sala-real .formulario-do-cartao .campo::placeholder {
+  color: #a79dac;
+  font-weight: 600;
+}
+
+.sala-real .formulario-do-cartao .campo:focus {
+  outline: 3px solid rgba(221, 42, 123, 0.16);
+  outline-offset: 2px;
+}
+
+.sala-real .formulario-do-cartao select.campo {
+  appearance: none;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, rgba(245, 133, 41, 0.55), rgba(221, 42, 123, 0.55), rgba(129, 52, 175, 0.55)) border-box;
+}
+
+.sala-real .formulario-do-cartao .linha-de-campos {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(92px, 0.7fr);
+  gap: 8px;
+}
+
+.sala-real .formulario-do-cartao .botao-primario {
+  min-height: 48px;
+  margin-top: 2px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 800;
+  box-shadow: 0 8px 18px rgba(221, 42, 123, 0.24);
+}
+
+.sala-real .formulario-do-cartao .botao-primario:disabled {
+  background: #eee9f0;
+  color: #8d8490;
+  box-shadow: none;
+}
+
+.sala-real .formulario-do-cartao .selo-de-privacidade {
+  padding-top: 0;
+  color: #706776;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.sala-real .apoio-do-pagamento {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.sala-real .linha-de-campos {
+  display: flex;
+  gap: 12px;
+}
+
+.sala-real .pix-pronto,
+.sala-real .pagamento-aprovado,
+.sala-real .pagamento-em-analise,
+.sala-real .pagamento-recusado {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.sala-real .pix-pronto {
+  padding: 0 0 8px;
+}
+
+.sala-real .qr-do-pix {
+  width: min(176px, 58vw);
+  aspect-ratio: 1;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid rgba(176, 68, 229, 0.5);
+}
+
+.sala-real .aviso-do-pix {
+  width: 100%;
+  margin: 6px 0 2px;
+  color: #555555;
+  font-size: 10px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.sala-real .copia-e-cola {
+  width: 100%;
+  min-height: 58px;
+  background: #ffffff;
+  border: 2px solid var(--brand-primary);
+  border-radius: 10px;
+  color: #111111;
+  padding: 9px 10px;
+  font-family: monospace;
+  font-size: 9px;
+  line-height: 1.25;
+  resize: none;
+}
+
+.sala-real .botao-copiar-pix {
+  min-height: 44px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.sala-real .pagamento-aprovado {
+  padding: 4px 22px 8px;
+}
+
+.sala-real .pagamento-aprovado-cartao {
+  gap: 8px;
+  padding: 4px 22px 8px;
+}
+
+.sala-real .icone-aprovado {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: #3bd64f;
+}
+
+.sala-real .icone-aprovado span {
+  width: 28px;
+  height: 17px;
+  border-left: 5px solid #ffffff;
+  border-bottom: 5px solid #ffffff;
+  transform: rotate(-45deg) translate(2px, -2px);
+}
+
+.sala-real .pagamento-aprovado h3 {
+  margin: 4px 0 -8px;
+  color: #111111;
+  font-size: 18px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.sala-real .apoio-aprovado {
+  margin: 0 0 8px;
+  color: #333333;
+  font-size: 12px;
+}
+
+.sala-real .pagamento-aprovado-cartao .apoio-aprovado {
+  max-width: 240px;
+  margin: -4px 0 4px;
+  color: #111111;
+  line-height: 1.25;
+}
+
+.sala-real .alerta-cartao-aprovado {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--brand-softest);
+  color: #111111;
+  text-align: left;
+}
+
+.sala-real .alerta-cartao-aprovado strong {
+  display: block;
+  color: #22c55e;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.sala-real .alerta-cartao-aprovado small {
+  display: block;
+  color: #4b4453;
+  font-size: 10px;
+  line-height: 1.15;
+}
+
+.sala-real .mini-check {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: #22c55e;
+}
+
+.sala-real .mini-check::before {
+  content: "";
+  width: 15px;
+  height: 9px;
+  border-left: 3px solid #ffffff;
+  border-bottom: 3px solid #ffffff;
+  transform: rotate(-45deg) translate(1px, -1px);
+}
+
+.sala-real .dados-do-pedido-aprovado {
+  width: 100%;
+  display: grid;
+  gap: 14px;
+  margin: 6px 0 8px;
+}
+
+.sala-real .pagamento-aprovado-cartao .dados-do-pedido-aprovado {
+  gap: 12px;
+  margin: 6px 0 8px;
+}
+
+.sala-real .titulo-resumo-pedido {
+  margin-bottom: -2px;
+  color: #111111;
+  font-size: 12px;
+  text-align: left;
+}
+
+.sala-real .dados-do-pedido-aprovado div {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  grid-template-areas:
+    "icone titulo"
+    "icone valor";
+  column-gap: 10px;
+  align-items: center;
+  text-align: left;
+}
+
+.sala-real .dados-do-pedido-aprovado dt {
+  grid-area: titulo;
+  color: #111111;
+  font-size: 12px;
+  line-height: 1.1;
+}
+
+.sala-real .dados-do-pedido-aprovado dd {
+  grid-area: valor;
+  color: var(--brand-primary);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.sala-real .pagamento-aprovado-cartao .dados-do-pedido-aprovado dd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sala-real .bandeira-cartao,
+.sala-real .parcelas-do-cartao {
+  margin-left: auto;
+  color: #515bd4;
+  font-size: 9px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.sala-real .parcelas-do-cartao {
+  color: var(--brand-primary);
+}
+
+.sala-real .icone-recibo {
+  grid-area: icone;
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--brand-softest);
+}
+
+.sala-real .icone-recibo::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  background: var(--brand-primary);
+}
+
+.sala-real .icone-recibo.pedido::before {
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 3h10v4h3v14H4V7h3V3zm2 4h6V5H9v2zm6 4H9v2h6v-2zm0 4H9v2h6v-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 3h10v4h3v14H4V7h3V3zm2 4h6V5H9v2zm6 4H9v2h6v-2zm0 4H9v2h6v-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .icone-recibo.data::before {
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 2h2v3h6V2h2v3h3v17H4V5h3V2zm11 8H6v10h12V10z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 2h2v3h6V2h2v3h3v17H4V5h3V2zm11 8H6v10h12V10z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .icone-recibo.metodo::before {
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 7h18v10H3V7zm2 3v5h14v-5H5zm2 6h4v2H7v-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3 7h18v10H3V7zm2 3v5h14v-5H5zm2 6h4v2H7v-2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .icone-recibo.valor-pago::before {
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5v1.1c1.7.3 3 1.3 3 2.9h-2c0-.6-.6-1-1.5-1h-1c-.8 0-1.5.3-1.5.9 0 .7.7.9 2.3 1.2 1.9.4 3.9.9 3.9 3 0 1.6-1.2 2.7-3.2 3V20h-2v-1c-1.9-.3-3.3-1.4-3.3-3.1h2c0 .7.7 1.2 1.8 1.2h1c1 0 1.7-.4 1.7-1s-.5-.9-2.4-1.3C9.8 14.4 8 13.7 8 11c0-1.5 1.1-2.5 3-2.9V7h2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm1 5v1.1c1.7.3 3 1.3 3 2.9h-2c0-.6-.6-1-1.5-1h-1c-.8 0-1.5.3-1.5.9 0 .7.7.9 2.3 1.2 1.9.4 3.9.9 3.9 3 0 1.6-1.2 2.7-3.2 3V20h-2v-1c-1.9-.3-3.3-1.4-3.3-3.1h2c0 .7.7 1.2 1.8 1.2h1c1 0 1.7-.4 1.7-1s-.5-.9-2.4-1.3C9.8 14.4 8 13.7 8 11c0-1.5 1.1-2.5 3-2.9V7h2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .agradecimento-do-pedido {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--brand-soft);
+  color: #111111;
+  text-align: left;
+}
+
+.sala-real .agradecimento-do-pedido strong {
+  display: block;
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.sala-real .agradecimento-do-pedido p {
+  margin: 2px 0 0;
+  font-size: 11px;
+  line-height: 1.15;
+}
+
+.sala-real .icone-caixa {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 auto;
+  background: var(--brand-primary);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 4 58 17v30L32 60 6 47V17L32 4zm0 6L14 19l18 9 18-9-18-9zM11 24v20l18 9V33l-18-9zm24 29 18-9V24l-18 9v20z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 64 64' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M32 4 58 17v30L32 60 6 47V17L32 4zm0 6L14 19l18 9 18-9-18-9zM11 24v20l18 9V33l-18-9zm24 29 18-9V24l-18 9v20z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .botao-voltar-live {
+  margin-top: 8px;
+  font-size: 18px;
+}
+
+.sala-real .link-meus-pedidos {
+  min-height: 36px;
+  color: var(--brand-primary);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* ---- Meus pedidos ---- */
+.sala-real .tela-de-pedidos {
+  position: fixed;
+  inset: 0;
+  z-index: 12;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  background: #ffffff;
+  color: #111111;
+  padding: 18px 16px calc(18px + env(safe-area-inset-bottom));
+}
+
+.sala-real .cabecalho-pedidos-loja {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 0 18px;
+}
+
+.sala-real .cabecalho-pedidos-loja .avatar-da-loja {
+  width: 46px;
+  height: 46px;
+  color: #111111;
+  border: 2px solid #111111;
+}
+
+.sala-real .cabecalho-pedidos-loja .nome-da-loja {
+  color: #111111;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.sala-real .cabecalho-pedidos-loja .selo-de-privacidade {
+  color: #555555;
+  font-size: 9px;
+}
+
+.sala-real .voltar-dos-pedidos {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 4px;
+  min-height: 32px;
+  color: var(--brand-primary);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.sala-real .voltar-dos-pedidos span {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.sala-real .apoio-dos-pedidos {
+  margin: -14px 0 0 24px;
+  color: #555555;
+  font-size: 8px;
+}
+
+.sala-real .abas-dos-pedidos {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding: 4px 0 28px;
+  scrollbar-width: none;
+}
+
+.sala-real .abas-dos-pedidos::-webkit-scrollbar {
+  display: none;
+}
+
+.sala-real .abas-dos-pedidos button {
+  position: relative;
+  flex: 0 0 auto;
+  min-height: 30px;
+  color: #111111;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.sala-real .abas-dos-pedidos button.ativa::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--brand-primary);
+}
+
+.sala-real .lista-de-pedidos {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sala-real .card-do-pedido {
+  display: grid;
+  grid-template-columns: minmax(70px, 0.85fr) minmax(96px, 1fr) minmax(58px, 0.7fr);
+  grid-template-areas:
+    "resumo fotos valor"
+    "status status pagamento"
+    "detalhes detalhes detalhes";
+  gap: 6px 8px;
+  padding: 12px;
+  border: 1px solid #f2d3ed;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 5px 16px rgba(17, 17, 17, 0.12);
+}
+
+.sala-real .resumo-do-pedido {
+  grid-area: resumo;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.sala-real .resumo-do-pedido strong,
+.sala-real .valor-do-pedido small {
+  color: #111111;
+  font-size: 8px;
+}
+
+.sala-real .resumo-do-pedido span {
+  color: var(--brand-primary);
+  font-size: 9px;
+  font-weight: 800;
+  overflow-wrap: anywhere;
+}
+
+.sala-real .resumo-do-pedido small {
+  color: #555555;
+  font-size: 8px;
+}
+
+.sala-real .fotos-do-pedido {
+  grid-area: fotos;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.sala-real .fotos-do-pedido img,
+.sala-real .fotos-do-pedido span {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  margin-left: -4px;
+  border: 2px solid #ffffff;
+  border-radius: 5px;
+  background: var(--brand-soft);
+  object-fit: cover;
+}
+
+.sala-real .fotos-do-pedido img:first-child,
+.sala-real .fotos-do-pedido span:first-child {
+  margin-left: 0;
+}
+
+.sala-real .fotos-do-pedido span {
+  display: grid;
+  place-items: center;
+  color: var(--brand-primary);
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.sala-real .fotos-do-pedido em {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 2px;
+  border-radius: 999px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.sala-real .valor-do-pedido {
+  grid-area: valor;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  line-height: 1.1;
+}
+
+.sala-real .valor-do-pedido strong {
+  color: var(--brand-primary);
+  font-size: 9px;
+}
+
+.sala-real .status-do-pedido {
+  grid-area: status;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: #22c55e;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.sala-real .ponto-do-status {
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #22c55e;
+}
+
+.sala-real .ponto-do-status.andamento {
+  background: #f59e0b;
+}
+
+.sala-real .ponto-do-status.cancelados {
+  background: #ef4444;
+}
+
+.sala-real .pagamento-do-pedido {
+  grid-area: pagamento;
+  justify-self: end;
+  color: #515bd4;
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.sala-real .detalhes-do-pedido {
+  grid-area: detalhes;
+  justify-self: start;
+  min-height: 20px;
+  color: var(--brand-primary);
+  font-size: 8px;
+  font-weight: 800;
+}
+
+.sala-real .ajuda-dos-pedidos {
+  margin-top: auto;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--brand-softest);
+  color: #111111;
+}
+
+.sala-real .ajuda-dos-pedidos strong {
+  display: block;
+  font-size: 18px;
+  line-height: 1.1;
+}
+
+.sala-real .ajuda-dos-pedidos p,
+.sala-real .ajuda-dos-pedidos button {
+  color: #111111;
+  font-size: 12px;
+}
+
+.sala-real .ajuda-dos-pedidos button {
+  color: var(--brand-primary);
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.sala-real .icone-ajuda {
+  width: 36px;
+  height: 36px;
+  background: var(--brand-gradient-end);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.4.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1l-2.2 2.2z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1.1-.3 1.2.4 2.4.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.3 1.1l-2.2 2.2z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .voltar-para-live {
+  align-self: center;
+  min-height: 30px;
+  color: var(--brand-primary);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.sala-real .tela-detalhe-pedido {
+  gap: 10px;
+}
+
+.sala-real .ajuda-do-detalhe {
+  margin-left: auto;
+  min-height: 34px;
+  color: var(--brand-primary);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.sala-real .resumo-detalhe-pedido {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid rgba(221, 42, 123, 0.2);
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 7px 18px rgba(17, 24, 39, 0.11);
+}
+
+.sala-real .resumo-detalhe-pedido div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sala-real .resumo-detalhe-pedido small {
+  color: #111111;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.sala-real .resumo-detalhe-pedido strong {
+  color: #111111;
+  font-size: 9px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+
+.sala-real .resumo-detalhe-pedido span {
+  color: var(--brand-primary);
+  font-size: 8px;
+  line-height: 1.1;
+}
+
+.sala-real .status-resumo.entregues {
+  color: #22c55e;
+}
+
+.sala-real .status-resumo.enviados,
+.sala-real .status-resumo.andamento {
+  color: #2563eb;
+}
+
+.sala-real .status-resumo.cancelados {
+  color: #ef4444;
+}
+
+.sala-real .titulo-itens-detalhe {
+  margin: 4px 0 0;
+  color: #111111;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.sala-real .itens-detalhe-pedido {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.sala-real .item-detalhe-pedido {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) auto;
+  grid-template-areas:
+    "foto texto qtd"
+    "foto texto codigo";
+  align-items: center;
+  gap: 6px 10px;
+  padding: 8px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 5px 16px rgba(17, 24, 39, 0.14);
+}
+
+.sala-real .item-detalhe-pedido img,
+.sala-real .item-detalhe-pedido > span {
+  grid-area: foto;
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  object-fit: cover;
+  background: var(--brand-soft);
+}
+
+.sala-real .item-detalhe-pedido > span {
+  display: grid;
+  place-items: center;
+  color: var(--brand-primary);
+  font-weight: 800;
+}
+
+.sala-real .item-detalhe-pedido div {
+  grid-area: texto;
+  min-width: 0;
+}
+
+.sala-real .item-detalhe-pedido div strong {
+  display: block;
+  color: #111111;
+  font-size: 15px;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
+}
+
+.sala-real .item-detalhe-pedido div b {
+  display: block;
+  color: var(--brand-primary);
+  font-size: 14px;
+  line-height: 1.15;
+}
+
+.sala-real .item-detalhe-pedido div small {
+  color: #111111;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sala-real .item-detalhe-pedido em {
+  grid-area: qtd;
+  color: #111111;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.sala-real .item-detalhe-pedido mark {
+  grid-area: codigo;
+  justify-self: end;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sala-real .totais-detalhe-pedido {
+  display: grid;
+  gap: 7px;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 5px 16px rgba(17, 24, 39, 0.14);
+}
+
+.sala-real .totais-detalhe-pedido div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #111111;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sala-real .totais-detalhe-pedido div:nth-child(2) strong {
+  color: #22c55e;
+}
+
+.sala-real .totais-detalhe-pedido div:last-child {
+  padding-top: 7px;
+  border-top: 2px solid var(--brand-primary);
+}
+
+.sala-real .totais-detalhe-pedido div:last-child strong {
+  color: var(--brand-primary);
+  font-size: 15px;
+}
+
+.sala-real .endereco-detalhe-pedido {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 5px 16px rgba(17, 24, 39, 0.14);
+}
+
+.sala-real .icone-endereco-detalhe {
+  width: 26px;
+  height: 26px;
+  background: var(--brand-gradient-end);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .endereco-detalhe-pedido strong,
+.sala-real .endereco-detalhe-pedido p {
+  color: #111111;
+  font-size: 12px;
+  line-height: 1.15;
+}
+
+.sala-real .endereco-detalhe-pedido p {
+  margin: 0;
+}
+
+.sala-real .endereco-detalhe-pedido button {
+  align-self: end;
+  color: var(--brand-primary);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.sala-real .ajuda-detalhe-pedido {
+  margin-top: auto;
+}
+
+/* ---- Vitrine ---- */
+.sala-real .grade-da-vitrine {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.sala-real .cartao-de-produto {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  min-width: 0;
+}
+
+.sala-real .foto-do-produto {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  object-fit: cover;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-gradient-end));
+  display: grid;
+  place-items: center;
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.sala-real .codigo-do-produto {
+  display: inline-block;
+  background: var(--bg-elevated);
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.sala-real .nome-do-produto {
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sala-real .preco {
+  color: var(--brand-primary);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.sala-real .saldo-da-variacao {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.sala-real .esgotado {
+  color: var(--danger);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* A peça que está na câmera agora (S3.5). A borda e o brilho chamam o
+   olho de longe, mas quem informa é o selo escrito logo acima do código:
+   cor sozinha não diz nada a quem não a distingue (GUIA §11). */
+/* O anel é box-shadow, e não borda mais grossa, para o cartão não mudar
+   de tamanho ao ganhar ou perder o destaque: a grade inteira dançaria a
+   cada peça que entra na câmera. Só token, como manda o topo do arquivo. */
+.sala-real .cartao-de-produto.em-destaque {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 1px var(--brand-primary);
+}
+
+/* Texto claro sobre o rosa da marca dá contraste de 3,5 para 1, abaixo do
+   mínimo de 4,5 que texto pequeno exige. Como é justamente este selo que
+   carrega a informação para quem não distingue a cor, ele não pode ser o
+   pedaço difícil de ler: o rosa vai para a borda, e o texto fica sobre o
+   fundo elevado, onde passa de 15 para 1. */
+.sala-real .selo-do-destaque {
+  align-self: flex-start;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--brand-primary);
+  border-radius: 9999px;
+  padding: 2px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Campo de código fixo (o gesto do chat — GUIA §3.3) ---- */
+.sala-real .barra-de-codigo {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: linear-gradient(transparent, var(--bg-base) 30%);
+  display: flex;
+  gap: 8px;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.sala-real .pilula-de-codigo {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  padding: 12px 16px;
+  color: var(--text-primary);
+}
+
+.sala-real .enviar-codigo {
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: var(--brand-primary);
+  color: #fff;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* Sugestões da vitrine, rentes ao campo e na zona do polegar (GUIA §3.3).
+   Ancoradas na própria barra (`bottom: 100%`), e não numa altura copiada
+   à mão, para não descolarem do campo quando ele mudar de tamanho. A
+   altura máxima existe para a lista nunca cobrir a live inteira. */
+.sala-real .sugestoes-de-codigo {
+  position: absolute;
+  bottom: 100%;
+  left: 16px;
+  right: 16px;
+  max-height: 45vh;
+  overflow-y: auto;
+  list-style: none;
+  padding: 0;
+  /* Mesmo fundo do cartão da vitrine, e por um motivo de leitura: a
+     pílula do código usa `--bg-elevated`, e sobre `--bg-elevated` ela
+     sumiria justamente o que a compradora precisa ler e digitar. */
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  z-index: 5;
+}
+
+.sala-real .sugestao {
+  width: 100%;
+  /* Alvo de toque bem acima dos 44px do guia: aqui ela erra o dedo com
+     a live rolando atrás e o teclado aberto. */
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  text-align: left;
+  /* Quem manda na rolagem por toque é esta linha, e não o cancelamento
+     do pointerdown que segura o foco no campo: sem ela, a lista com mais
+     itens do que cabe poderia ficar presa em algum navegador. */
+  touch-action: pan-y;
+}
+
+.sala-real .sugestoes-de-codigo li + li .sugestao {
+  border-top: 1px solid var(--border-subtle);
+}
+
+.sala-real .sugestao:active {
+  background: var(--bg-elevated);
+}
+
+.sala-real .foto-da-sugestao {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-gradient-end));
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+}
+
+.sala-real .detalhes-da-sugestao {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sala-real .linha-da-sugestao {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.sala-real .resposta-da-pilula {
+  position: fixed;
+  bottom: 84px;
+  left: 16px;
+  right: 16px;
+  max-width: 448px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  font-weight: 600;
+}
+
+.sala-real .resposta-da-pilula.sucesso {
+  color: var(--success);
+}
+
+.sala-real .resposta-da-pilula.recusa {
+  color: var(--danger);
+}
+
+.sala-real .contador-da-sacola {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 10px 14px;
+  font-weight: 700;
+}
+
+/* ---- Bottom sheet (a live é o chão; tudo é camada — GUIA §3.1) ---- */
+.sala-real .fundo-da-sheet {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 10;
+}
+
+.sala-real .sheet {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  max-width: 480px;
+  margin: 0 auto;
+  max-height: 86dvh;
+  overflow-y: auto;
+  background: var(--bg-surface);
+  border-radius: 24px 24px 0 0;
+  padding: 8px 16px calc(16px + env(safe-area-inset-bottom));
+  z-index: 11;
+  animation: subir 300ms cubic-bezier(0.2, 0.9, 0.3, 1);
+}
+
+/* Duas sintaxes: `scrollbar-*` atende Firefox e Chrome novo,
+   `::-webkit-scrollbar` cobre Safari e Chrome antigo. */
+.sala-real .sheet,
+.sala-real .tela-de-pedidos {
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-soft-border) transparent;
+}
+
+.sala-real .sheet::-webkit-scrollbar,
+.sala-real .tela-de-pedidos::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sala-real .sheet::-webkit-scrollbar-track,
+.sala-real .tela-de-pedidos::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sala-real .sheet::-webkit-scrollbar-thumb,
+.sala-real .tela-de-pedidos::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background: var(--brand-soft-border);
+}
+
+.sala-real .sheet::-webkit-scrollbar-thumb:hover,
+.sala-real .tela-de-pedidos::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+@keyframes subir {
+  from {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+.sala-real .alca-da-sheet {
+  width: 40px;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--border-subtle);
+  margin: 4px auto 12px;
+}
+
+.sala-real .titulo-da-sheet {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.sala-real .cabecalho-da-sacola {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.sala-real .cabecalho-da-sacola .titulo-da-sheet {
+  margin-bottom: 0;
+}
+
+.sala-real .fechar-sheet {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.sala-real .sheet-de-produto {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.sala-real .cabecalho-da-escolha {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sala-real .foto-da-escolha {
+  width: 72px;
+  height: 72px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-gradient-end));
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.sala-real .cabecalho-da-escolha .titulo-da-sheet {
+  margin: 4px 0 2px;
+}
+
+.sala-real .grupo-de-escolha {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 0;
+  padding: 0;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.sala-real .grupo-de-escolha legend {
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.sala-real .opcoes-de-variacao {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(86px, 1fr));
+  gap: 8px;
+}
+
+.sala-real .opcao-de-variacao {
+  min-height: 56px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.sala-real .opcao-de-variacao input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sala-real .opcao-de-variacao span {
+  font-size: 15px;
+  line-height: 1.1;
+}
+
+.sala-real .opcao-de-variacao small {
+  color: var(--text-secondary);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sala-real .opcao-de-variacao.selecionada {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.25);
+}
+
+.sala-real .opcao-de-variacao.indisponivel {
+  color: var(--text-muted);
+  opacity: 0.65;
+}
+
+.sala-real .seletor-de-quantidade {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 10px 12px;
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  font: inherit;
+  font-size: 16px;
+}
+
+/* ---- Item da sacola (GUIA §4.4) ---- */
+.sala-real .item-da-sacola {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 74px;
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  background: var(--bg-surface);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.14);
+}
+
+.sala-real .miniatura-do-item {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--brand-primary), var(--brand-gradient-end));
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.sala-real .detalhes-do-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.sala-real .nome-do-item {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sala-real .apoio-do-item {
+  color: var(--text-secondary);
+  font-size: 12px;
+}
+
+.sala-real .acoes-do-item {
+  align-self: stretch;
+  min-width: 96px;
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  justify-items: center;
+  align-items: center;
+  gap: 2px;
+}
+
+.sala-real .remover-item {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.sala-real .remover-item::before {
+  content: "";
+  width: 14px;
+  height: 14px;
+  background: var(--brand-primary);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 448 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M135.2 17.7 128 32H32C14.3 32 0 46.3 0 64s14.3 32 32 32h384c17.7 0 32-14.3 32-32s-14.3-32-32-32h-96l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32l21.2 339c1.6 25.3 22.6 45 47.9 45h245.8c25.3 0 46.3-19.7 47.9-45L416 128z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 448 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M135.2 17.7 128 32H32C14.3 32 0 46.3 0 64s14.3 32 32 32h384c17.7 0 32-14.3 32-32s-14.3-32-32-32h-96l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32l21.2 339c1.6 25.3 22.6 45 47.9 45h245.8c25.3 0 46.3-19.7 47.9-45L416 128z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .controle-de-quantidade {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  color: var(--text-primary);
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 800;
+}
+
+.sala-real .controle-de-quantidade span {
+  min-width: 18px;
+  text-align: center;
+}
+
+.sala-real .ajustar-quantidade {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border: 2px solid var(--brand-primary);
+  border-radius: 999px;
+  color: var(--brand-primary);
+  background: var(--brand-softest);
+  font-size: 18px;
+  line-height: 1;
+  font-weight: 800;
+  padding: 0;
+}
+
+.sala-real .ajustar-quantidade:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.sala-real .codigo-do-item {
+  max-width: 96px;
+  min-height: 18px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-size: 11px;
+  line-height: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.sala-real .confirmacao-de-exclusao {
+  position: sticky;
+  bottom: 12px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0 14px;
+  padding: 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  background: var(--bg-elevated);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.22);
+}
+
+.sala-real .confirmacao-de-exclusao p {
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.sala-real .confirmacao-de-exclusao small {
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.sala-real .quantidade-para-excluir {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: var(--text-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sala-real .quantidade-para-excluir select {
+  min-width: 72px;
+  min-height: 40px;
+  border: 1px solid var(--brand-primary);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: #ffffff;
+  color: #111111;
+  font: inherit;
+  font-size: 16px;
+}
+
+.sala-real .acoes-da-confirmacao {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.sala-real .botao-remover {
+  min-height: 44px;
+  border-radius: 999px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.sala-real .aviso-de-controle {
+  position: sticky;
+  bottom: 12px;
+  z-index: 2;
+  margin: 10px 0;
+  border: 1px solid var(--brand-soft-border);
+  border-radius: 12px;
+  background: var(--brand-softest);
+  color: var(--brand-primary);
+  font-weight: 700;
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.18);
+}
+
+.sala-real .botao-finalizar-pagamento {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 48px;
+  margin-top: 2px;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+.sala-real .icone-de-pagamento {
+  width: 18px;
+  height: 18px;
+  background: #ffffff;
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 448 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M144 144v48h160v-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192v-48C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64h16z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 448 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M144 144v48h160v-48c0-44.2-35.8-80-80-80s-80 35.8-80 80zM80 192v-48C80 64.5 144.5 0 224 0s144 64.5 144 144v48h16c35.3 0 64 28.7 64 64v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V256c0-35.3 28.7-64 64-64h16z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .selo-de-seguranca {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: var(--text-secondary);
+  font-size: 12px;
+  text-align: center;
+  padding-top: 8px;
+}
+
+.sala-real .selo-de-seguranca::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background: var(--brand-primary);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M256 0c4.6 0 9.2 1 13.4 2.9l176 78.2c15.3 6.8 25.2 22 25.2 38.7 0 156.3-91.1 302.5-230.5 369.4-10.2 4.9-22 4.9-32.2 0C68.5 422.3-22.6 276.1-22.6 119.8c0-16.7 9.9-31.9 25.2-38.7l176-78.2C246.8 1 251.4 0 256 0zm111 176c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L224 251.1l-45.1-45.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l62.1 62.1c9.4 9.4 24.6 9.4 33.9 0L367 176z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M256 0c4.6 0 9.2 1 13.4 2.9l176 78.2c15.3 6.8 25.2 22 25.2 38.7 0 156.3-91.1 302.5-230.5 369.4-10.2 4.9-22 4.9-32.2 0C68.5 422.3-22.6 276.1-22.6 119.8c0-16.7 9.9-31.9 25.2-38.7l176-78.2C246.8 1 251.4 0 256 0zm111 176c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0L224 251.1l-45.1-45.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l62.1 62.1c9.4 9.4 24.6 9.4 33.9 0L367 176z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ---- Cronômetro (GUIA §4.2 — sempre com rótulo escrito) ---- */
+.sala-real .cronometro {
+  font-variant-numeric: tabular-nums;
+  font-size: 12px;
+  color: var(--warning);
+}
+
+.sala-real .cronometro.critico {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+.sala-real .cronometro.pulsando {
+  animation: pulso 1s ease-in-out infinite;
+}
+
+@keyframes pulso {
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.sala-real .selo-cumulativo {
+  font-size: 12px;
+  color: var(--info);
+}
+
+/* S6.1: o aviso da última chamada abre a lista, porque explica de uma
+   vez os cronômetros que aparecem logo abaixo. Alarma mais que o aviso
+   do frete, de propósito: aqui a compradora precisa agir. */
+.sala-real .aviso-da-ultima-chamada {
+  color: var(--warning);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 0;
+}
+
+/* ---- Totais e selos ---- */
+.sala-real .linha-de-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  color: var(--text-secondary);
+}
+
+.sala-real .sheet > .linha-de-total {
+  margin: 0 8px;
+  padding: 6px 8px;
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.sala-real .sheet > .linha-de-total > span:first-child {
+  font-weight: 800;
+}
+
+.sala-real .sheet > .linha-de-total:not(.subtotal):not(.principal) {
+  margin-top: 18px;
+  border-top: 2px solid var(--brand-primary);
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 -3px 14px rgba(0, 0, 0, 0.12);
+}
+
+.sala-real .sheet > .linha-de-total.subtotal {
+  border-bottom: 2px solid var(--brand-primary);
+}
+
+.sala-real .sheet > .linha-de-total.principal {
+  margin-bottom: 16px;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.16);
+}
+
+.sala-real .linha-de-total.principal {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.sala-real .valor {
+  font-variant-numeric: tabular-nums;
+}
+
+.sala-real .valor.destaque {
+  color: var(--brand-primary);
+}
+
+.sala-real .selo-confirmado {
+  color: var(--success);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sala-real .aviso {
+  color: var(--text-secondary);
+  font-size: 12px;
+  padding: 8px 0;
+}
+
+/* Aviso do plano B: discreto de propósito. Ele informa, não alarma:
+   a compra segue normal e a compradora não precisa fazer nada. */
+.sala-real .aviso-do-frete {
+  width: 100%;
+  max-width: 100%;
+  color: var(--text-secondary);
+  font-size: 11px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+  padding: 0 10px 8px;
+  text-align: center;
+  white-space: normal;
+}
+
+.sala-real .erro-do-formulario {
+  color: var(--danger);
+  font-size: 12px;
+  padding: 4px 0;
+}
+
+.sala-real .revisao-da-entrega {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sala-real .cartao-endereco-revisao {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(168, 85, 247, 0.28);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+  color: #111827;
+}
+
+.sala-real .icone-endereco {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  color: #a855f7;
+}
+
+.sala-real .icone-endereco svg {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.sala-real .texto-endereco-revisao {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12px;
+  line-height: 1.15;
+}
+
+.sala-real .texto-endereco-revisao strong {
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+.sala-real .texto-endereco-revisao span {
+  overflow-wrap: anywhere;
+}
+
+.sala-real .botao-copiar-endereco {
+  align-self: end;
+  min-width: 44px;
+  min-height: 44px;
+  border: 0;
+  background: transparent;
+  color: #a21caf;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.sala-real .opcoes-de-frete {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.sala-real .opcoes-de-frete > strong {
+  color: #111827;
+  font-size: 14px;
+}
+
+.sala-real .opcao-de-frete {
+  display: grid;
+  grid-template-areas:
+    "input nome valor"
+    "input prazo prazo";
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 2px 8px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(236, 72, 153, 0.22);
+  border-radius: 12px;
+  background: #ffffff;
+  color: #111827;
+  cursor: pointer;
+}
+
+.sala-real .opcao-de-frete.selecionada {
+  border-color: var(--brand-primary);
+  background: var(--brand-softest);
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.14);
+}
+
+.sala-real .opcao-de-frete input {
+  grid-area: input;
+  accent-color: var(--brand-primary);
+}
+
+.sala-real .nome-do-frete {
+  grid-area: nome;
+  min-width: 0;
+  overflow-wrap: anywhere;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sala-real .valor-do-frete {
+  grid-area: valor;
+  color: var(--brand-primary);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.sala-real .opcao-de-frete small {
+  grid-area: prazo;
+  color: var(--text-secondary);
+  font-size: 11px;
+}
+
+.sala-real .opcoes-de-frete-na-sacola {
+  gap: 8px;
+  margin: 8px 0;
+  padding: 10px;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  background:
+    linear-gradient(#fff7fb, #ffffff) padding-box,
+    linear-gradient(135deg, #f58529 0%, #dd2a7b 48%, #8134af 100%) border-box;
+  box-shadow: 0 6px 18px rgba(221, 42, 123, 0.1);
+}
+
+.sala-real .opcoes-de-frete-na-sacola > strong {
+  color: #111827;
+  font-size: 14px;
+  line-height: 1.1;
+}
+
+.sala-real .estado-do-frete {
+  color: #777386;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+.sala-real .botao-opcao-de-frete {
+  grid-template-areas:
+    "nome valor acao"
+    "prazo prazo acao";
+  grid-template-columns: minmax(0, 1fr) auto minmax(68px, auto);
+  min-height: 54px;
+  padding: 9px 10px;
+  border: 1px solid rgba(221, 42, 123, 0.18);
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 3px 10px rgba(17, 24, 39, 0.07);
+  text-align: left;
+}
+
+/* Pedir outras opções é gesto, não efeito: cotar acorda a transportadora
+   e gasta a cota da loja, então a lista só aparece quando ela pede. */
+.sala-real .botao-trocar-frete {
+  align-self: start;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid rgba(221, 42, 123, 0.28);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--brand-primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.sala-real .botao-opcao-de-frete em {
+  grid-area: acao;
+  align-self: center;
+  justify-self: end;
+  min-width: 68px;
+  padding: 7px 9px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--brand-gradient-end) 0%, var(--brand-primary) 100%);
+  color: #ffffff;
+  font-size: 10px;
+  line-height: 1;
+  font-style: normal;
+  font-weight: 800;
+  text-align: center;
+}
+
+.sala-real .botao-opcao-de-frete:disabled {
+  cursor: progress;
+  opacity: 0.72;
+}
+
+.sala-real .botao-opcao-de-frete.frete-atual {
+  border-color: rgba(34, 197, 94, 0.3);
+  background: linear-gradient(135deg, #f2fff7 0%, #ffffff 100%);
+  cursor: default;
+}
+
+.sala-real .botao-opcao-de-frete.frete-atual em {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+.sala-real .opcoes-de-frete-na-sacola .nome-do-frete {
+  color: #111827;
+  font-size: 13px;
+}
+
+.sala-real .opcoes-de-frete-na-sacola .valor-do-frete {
+  white-space: nowrap;
+  color: var(--brand-primary);
+  font-size: 13px;
+}
+
+.sala-real .opcoes-de-frete-na-sacola .opcao-de-frete small {
+  color: #8b8795;
+  font-size: 11px;
+}
+
+@media (max-width: 380px) {.sala-real .botao-opcao-de-frete {
+    grid-template-areas:
+      "nome nome"
+      "prazo valor"
+      "acao acao";
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 4px 8px;
+  }
+
+.sala-real .botao-opcao-de-frete em {
+    justify-self: stretch;
+  }
+
+}
+
+.sala-real .apoio-da-revisao {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.sala-real .formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sala-real .sheet .formulario .rotulo-do-campo {
+  color: #777386;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.sala-real .sheet .formulario .campo {
+  min-height: 50px;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(135deg, #f58529 0%, #dd2a7b 34%, #8134af 68%, #515bd4 100%) border-box;
+  border: 1.5px solid transparent;
+  border-radius: 14px;
+  color: #111111;
+  box-shadow: 0 4px 14px rgba(221, 42, 123, 0.09);
+}
+
+.sala-real .sheet .formulario .campo::placeholder {
+  color: #b88aa9;
+}
+
+.sala-real .sheet .formulario .campo:focus {
+  outline: 3px solid rgba(221, 42, 123, 0.18);
+  outline-offset: 2px;
+}
+
+.sala-real .sheet .formulario .campo:disabled {
+  background:
+    linear-gradient(#fff7fd, #fff7fd) padding-box,
+    linear-gradient(135deg, rgba(245, 133, 41, 0.45), rgba(129, 52, 175, 0.45)) border-box;
+  color: #6b5565;
+}
+
+.sala-real .aviso-do-cep {
+  display: block;
+  min-height: 16px;
+  margin-top: 5px;
+  color: #8a4b77;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sala-real .aviso-do-cep.consultando {
+  color: #8134af;
+}
+
+.sala-real .lado-a-lado {
+  display: flex;
+  gap: 12px;
+}
+
+.sala-real .lado-a-lado > * {
+  flex: 1;
+}
+
+/* ---- Rodapé obrigatório (GUIA §9) ---- */
+.sala-real .rodape {
+  margin-top: auto;
+  padding-top: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.sala-real .botao-ver-pedidos-rodape {
+  display: block;
+  margin: 8px auto 0;
+  /* Alvo de toque mínimo do guia (§2.5). */
+  min-height: 44px;
+  padding: 0 20px;
+  border: 1px solid var(--brand-soft-border);
+  border-radius: 999px;
+  background: var(--brand-softest);
+  /* Tom pressionado: o rosa da marca não passa no contraste AA sobre
+     branco em texto deste tamanho. */
+  color: var(--brand-primary-pressed);
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.sala-real .estado-vazio {
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 32px 0;
+}
+
+/* Esqueleto com formas reais, nunca spinner de página (GUIA §11). */
+.sala-real .esqueleto {
+  border-radius: 16px;
+  background: var(--bg-surface);
+  animation: pulso 1.2s ease-in-out infinite;
+  min-height: 96px;
+}
+
+@media (prefers-reduced-motion: reduce) {.sala-real .sheet {
+    animation: none;
+  }
+
+.sala-real .cronometro.pulsando,
+.sala-real .esqueleto {
+    animation: none;
+  }
+
+}
+
+/* Degrau 2 da escada de resgate: a compradora prova que a sacola é dela
+   (VINCULO_CARRINHO_SALA.md §6). O número nunca é exibido, só conferido. */
+.sala-real .aviso-do-resgate {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.sala-real .resgate-da-sacola,
+.sala-real .resgate-aberto .botao-secundario {
+  min-height: 44px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  background: transparent;
+  color: var(--text-secondary);
+  padding: 10px 16px;
+}
+
+.sala-real .resgate-aberto {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--bg-surface);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.sala-real .campo-do-resgate {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.sala-real .campo-do-resgate input {
+  /* 16px evita o zoom automático do iOS em campo de texto (GUIA §2.4). */
+  font-size: 16px;
+  min-height: 44px;
+  border-radius: 16px;
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  padding: 10px 14px;
+}
+
+.sala-real .apoio-do-resgate {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ---- Tela clara pos-@ da loja (/zig) ---- */
+.sala-real .tela-vitrine-clara {
+  width: 100%;
+  max-width: min(100vw, 390px);
+  min-height: 100dvh;
+  background: #ffffff;
+  color: #111111;
+  /* O respiro embaixo cobre o campo fixo mais a faixa de não-afiliação,
+     senão o rodapé que rola fica escondido atrás dos dois. */
+  padding: 14px 14px 116px;
+}
+
+.sala-real .tela-vitrine-clara .cabecalho-da-loja {
+  gap: 10px;
+  padding: 2px 0 22px;
+}
+
+.sala-real .tela-vitrine-clara .avatar-da-loja {
+  width: 44px;
+  height: 44px;
+  border: 2px solid transparent;
+  border-radius: 9999px;
+  background:
+    linear-gradient(var(--brand-primary), var(--brand-primary)) padding-box,
+    conic-gradient(
+        from 180deg,
+        var(--danger) 0%,
+        var(--brand-accent-terracota) 25%,
+        var(--brand-primary) 55%,
+        var(--brand-gradient-end) 85%,
+        var(--danger) 100%
+      )
+      border-box;
+  box-shadow: inset 0 0 0 2px #ffffff;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sala-real .tela-vitrine-clara .nome-da-loja {
+  color: #111111;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* Só no rodapé da vitrine, que é o único lugar onde esta classe vira
+   pílula. Sem o recorte ela alcançava a tela de pedidos e o selo do
+   cartão no pagamento, que a linha do PR não pretendia tocar. */
+.sala-real .tela-vitrine-clara .rodape .selo-de-privacidade {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 3px;
+  padding: 3px 9px 3px 7px;
+  border: 1px solid #d7ede0;
+  border-radius: 999px;
+  background: #f2faf5;
+  color: #2f6b4a;
+  font-size: 12px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+/* Cadeado do Lucide no lugar do emoji: o 🔒 muda de desenho e de cor a
+   cada aparelho, e o guia (§6) proíbe misturar famílias de ícone. */
+.sala-real .tela-vitrine-clara .rodape .selo-de-privacidade::before {
+  content: '';
+  width: 12px;
+  height: 12px;
+  flex: 0 0 auto;
+  background: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3' y='11' width='18' height='11' rx='2'/%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .vitrine-da-live {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sala-real .cabecalho-da-vitrine {
+  display: grid;
+  grid-template-columns: minmax(32px, 1fr) auto minmax(32px, 1fr);
+  align-items: end;
+  gap: 8px;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.sala-real .titulo-da-vitrine {
+  width: fit-content;
+  margin-inline: auto;
+  color: var(--brand-primary);
+  font-size: 22px;
+  line-height: 1.05;
+  font-weight: 800;
+}
+
+/* Sem o recorte no texto o `color: transparent` apagaria o título. A cor
+   sólida acima é o que sobra em quem não suporta. */
+@supports (background-clip: text) or (-webkit-background-clip: text) {.sala-real .titulo-da-vitrine {
+    background: linear-gradient(
+      90deg,
+      var(--brand-accent-terracota) 0%,
+      var(--brand-primary) 50%,
+      var(--brand-gradient-end) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+}
+
+.sala-real .cabecalho-da-vitrine p {
+  color: #333333;
+  font-size: 9px;
+  margin-top: 2px;
+}
+
+.sala-real .linha-decorativa {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--brand-accent-terracota) 0%,
+    var(--brand-primary) 50%,
+    var(--brand-gradient-end) 100%
+  );
+  border-radius: 999px;
+  margin-bottom: 6px;
+}
+
+.sala-real .linha-decorativa:last-child {
+  background: linear-gradient(
+    270deg,
+    var(--brand-accent-terracota) 0%,
+    var(--brand-primary) 50%,
+    var(--brand-gradient-end) 100%
+  );
+}
+
+.sala-real .tela-vitrine-clara .grade-da-vitrine {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.sala-real .tela-vitrine-clara .cartao-de-produto {
+  position: relative;
+  min-width: 0;
+  gap: 4px;
+  padding: 6px;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(17, 17, 17, 0.08);
+}
+
+.sala-real .tela-vitrine-clara .cartao-de-produto.em-destaque {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px var(--brand-primary);
+}
+
+.sala-real .tela-vitrine-clara .foto-do-produto {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  background: var(--brand-soft);
+  color: var(--brand-primary);
+  font-size: 24px;
+}
+
+.sala-real .dados-do-produto {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sala-real .tela-vitrine-clara .nome-do-produto {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  color: #111111;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+/* Tom pressionado: o rosa da marca não passa no contraste AA neste
+   tamanho sobre branco. */
+.sala-real .tela-vitrine-clara .preco {
+  color: var(--brand-primary-pressed);
+  font-size: 15px;
+  line-height: 1.15;
+  font-weight: 800;
+}
+
+.sala-real .tela-vitrine-clara .saldo-da-variacao {
+  color: #555555;
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+.sala-real .tela-vitrine-clara .esgotado {
+  color: var(--danger);
+  font-size: 12px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+/* A sombra existe porque a pílula fica sobre a foto, que pode ser
+   clara. */
+.sala-real .tela-vitrine-clara .codigo-do-produto {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  max-width: calc(100% - 20px);
+  min-height: 18px;
+  padding: 1px 8px;
+  background: var(--brand-primary);
+  color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(17, 17, 17, 0.25);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 800;
+}
+
+/* A largura para em 56px do lado direito: é onde começa a pílula do
+   código, e sem o limite os dois se sobrepunham na mesma linha. */
+.sala-real .tela-vitrine-clara .selo-do-destaque {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  max-width: calc(100% - 56px);
+  background: rgba(17, 17, 17, 0.78);
+  color: #ffffff;
+  border: 0;
+  border-radius: 999px;
+  padding: 2px 6px;
+  font-size: 9px;
+}
+
+.sala-real .chamada-do-codigo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 64px;
+  margin-top: 4px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: var(--brand-soft);
+  color: #111111;
+}
+
+.sala-real .chamada-do-codigo strong {
+  display: block;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
+.sala-real .chamada-do-codigo p {
+  font-size: 11px;
+}
+
+.sala-real .icone-da-chamada {
+  width: 48px;
+  height: 48px;
+  background: var(--brand-primary);
+  color: transparent;
+  font-size: 0;
+  flex-shrink: 0;
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 448 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160v-48zm-48 48H48c-26.5 0-48 21.5-48 48v240c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V208c0-26.5-21.5-48-48-48h-64v-48C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 448 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160v-48zm-48 48H48c-26.5 0-48 21.5-48 48v240c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64V208c0-26.5-21.5-48-48-48h-64v-48C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .tela-vitrine-clara .contador-da-sacola {
+  top: 14px;
+  left: auto;
+  right: max(14px, calc((100vw - 390px) / 2 + 14px));
+  min-width: 50px;
+  min-height: 50px;
+  padding: 0;
+  background: none;
+  border: 0;
+  box-shadow: none;
+}
+
+.sala-real .tela-vitrine-clara .quantidade-da-sacola {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  place-items: center;
+  /* `min-width` igual à altura mantém o selo redondo com um dígito; com
+     dois ou três o padding vence e ele alarga em vez de vazar. */
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  /* A borda é o vão contra o traço do carrinho por baixo. */
+  border: 2px solid #ffffff;
+  border-radius: 9999px;
+  /* Tom pressionado: sobre o rosa da marca o texto branco não passa no
+     contraste AA. `--danger` fica de fora por ser token de erro. */
+  background: var(--brand-primary-pressed);
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Carrinho do Lucide (GUIA §6). */
+.sala-real .tela-vitrine-clara .contador-da-sacola::before {
+  content: '';
+  position: absolute;
+  /* A folga em cima e à direita é onde o selo se sobrepõe. */
+  inset: 10px 10px 4px 4px;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-gradient-end) 100%);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='21' r='1'/%3E%3Ccircle cx='19' cy='21' r='1'/%3E%3Cpath d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='8' cy='21' r='1'/%3E%3Ccircle cx='19' cy='21' r='1'/%3E%3Cpath d='M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* Sobe a altura da faixa de não-afiliação, que fica colada embaixo. */
+.sala-real .tela-vitrine-clara .barra-de-codigo {
+  bottom: calc(20px + env(safe-area-inset-bottom));
+  padding: 8px 14px 6px;
+  background: #ffffff;
+  gap: 6px;
+  max-width: 390px;
+}
+
+/* Fixa junto do campo, e não no fim da página que rola: é aviso
+   obrigatório (GUIA §9) e precisa estar à vista sem depender de a
+   compradora rolar até o fim. */
+.sala-real .aviso-de-nao-afiliacao {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 4;
+  max-width: 390px;
+  margin: 0 auto;
+  padding: 0 14px calc(6px + env(safe-area-inset-bottom));
+  background: #ffffff;
+  color: #6b6b7a;
+  font-size: 12px;
+  line-height: 1.25;
+  text-align: center;
+}
+
+.sala-real .tela-vitrine-clara .pilula-de-codigo {
+  height: 44px;
+  min-width: 0;
+  background: #ffffff;
+  border: 1.5px solid var(--brand-primary);
+  color: #111111;
+  border-radius: 999px;
+  padding: 9px 16px;
+}
+
+.sala-real .tela-vitrine-clara .pilula-de-codigo::placeholder {
+  color: var(--brand-placeholder);
+}
+
+.sala-real .tela-vitrine-clara .enviar-codigo {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, var(--brand-primary) 0%, var(--brand-gradient-end) 100%);
+  color: #ffffff;
+  font-size: 0;
+  box-shadow: 0 2px 8px rgba(201, 42, 199, 0.35);
+}
+
+.sala-real .tela-vitrine-clara .icone-enviar {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 27px;
+  height: 22px;
+  background: #ffffff;
+  transform: translate(-50%, -50%);
+  mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h370.7L297.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z'/%3E%3C/svg%3E") center / contain no-repeat;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h370.7L297.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.sala-real .tela-vitrine-clara .resposta-da-pilula {
+  bottom: 84px;
+  max-width: 366px;
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .sugestoes-de-codigo {
+  background: #ffffff;
+  border: 1px solid #d8d8d8;
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .sugestao:active {
+  background: var(--brand-soft);
+}
+
+.sala-real .tela-vitrine-clara .rodape {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-top: 8px;
+  color: #555555;
+  font-size: 12px;
+}
+
+.sala-real .tela-vitrine-clara .rodape .botao-ver-pedidos-rodape {
+  margin-top: 0;
+}
+
+.sala-real .tela-vitrine-clara .estado-vazio {
+  color: #333333;
+}
+
+.sala-real .tela-vitrine-clara .sheet {
+  background: #ffffff;
+  color: #111111;
+  border: 1px solid #e8e8e8;
+}
+
+.sala-real .tela-vitrine-clara .fechar-sheet {
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .confirmacao-de-exclusao {
+  background: var(--brand-softest);
+  border-color: var(--brand-soft-border);
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .confirmacao-de-exclusao p {
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .confirmacao-de-exclusao small {
+  color: #555555;
+}
+
+.sala-real .tela-vitrine-clara .quantidade-para-excluir {
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .confirmacao-de-exclusao .botao-discreto {
+  min-height: 44px;
+  border: 1px solid var(--brand-soft-border);
+  border-radius: 999px;
+  color: var(--brand-primary);
+  background: #ffffff;
+  font-weight: 700;
+}
+
+.sala-real .tela-vitrine-clara .selo-de-seguranca {
+  color: #555555;
+}
+
+.sala-real .tela-vitrine-clara .sheet-de-produto {
+  box-shadow: 0 -8px 24px rgba(17, 17, 17, 0.14);
+}
+
+.sala-real .tela-vitrine-clara .grupo-de-escolha {
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .opcao-de-variacao {
+  background: #ffffff;
+  border-color: #d8d8d8;
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .opcao-de-variacao small {
+  color: #555555;
+}
+
+.sala-real .tela-vitrine-clara .opcao-de-variacao.selecionada {
+  border-color: var(--brand-primary);
+  background: var(--brand-softest);
+  box-shadow: 0 0 0 2px rgba(236, 72, 153, 0.2);
+}
+
+.sala-real .tela-vitrine-clara .opcao-de-variacao.indisponivel {
+  color: #777777;
+  background: #f5f5f5;
+}
+
+.sala-real .tela-vitrine-clara .seletor-de-quantidade {
+  background: #ffffff;
+  border-color: #d8d8d8;
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .sheet-de-produto .botao-discreto {
+  min-height: 44px;
+  border: 1px solid var(--brand-soft-border);
+  border-radius: 999px;
+  color: var(--brand-primary);
+  background: var(--brand-softest);
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 16px;
+}
+
+.sala-real .tela-vitrine-clara .item-da-sacola {
+  background: #ffffff;
+  border-color: #eeeeee;
+  box-shadow: 0 3px 12px rgba(17, 17, 17, 0.14);
+}
+
+.sala-real .tela-vitrine-clara .controle-de-quantidade {
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .ajustar-quantidade {
+  background: var(--brand-softest);
+  border-color: var(--brand-primary);
+  color: var(--brand-primary);
+}
+
+.sala-real .tela-vitrine-clara .sheet > .linha-de-total {
+  background: #ffffff;
+  color: #111111;
+}
+
+.sala-real .tela-vitrine-clara .sheet > .linha-de-total:not(.subtotal):not(.principal) {
+  box-shadow: 0 -3px 14px rgba(17, 17, 17, 0.12);
+}
+
+.sala-real .tela-vitrine-clara .sheet > .linha-de-total.principal {
+  box-shadow: 0 6px 14px rgba(17, 17, 17, 0.16);
+}
+
+.sala-real .tela-vitrine-clara .apoio-do-item,
+.sala-real .tela-vitrine-clara .linha-de-total,
+.sala-real .tela-vitrine-clara .aviso,
+.sala-real .tela-vitrine-clara .motivo-do-botao {
+  color: #555555;
+}
+
+/* ---- Porta de entrada do @ (/zig antes da vitrine) ---- */
+.sala-real .tela-entrada-arroba {
+  width: 100%;
+  max-width: min(100vw, 390px);
+  min-height: 100dvh;
+  background: transparent;
+  color: #111111;
+  padding: 0 20px 32px;
+}
+
+.sala-real .tela-entrada-arroba .cabecalho-da-loja {
+  flex-direction: column;
+  gap: 12px;
+  /* Escapa da coluna de 390px: presa a ela, a faixa deixava dois vãos
+     brancos nas laterais em tela larga. */
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid #dbdbdb;
+  background: linear-gradient(
+    180deg,
+    rgba(236, 72, 153, 0.1) 0%,
+    rgba(176, 68, 229, 0.06) 55%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  text-align: center;
+}
+
+/* As camadas do anel saem de borda e sombra interna: parada de cor num
+   gradiente serrilha a curva, que o `border-radius` suaviza e ela não. */
+.sala-real .tela-entrada-arroba .avatar-da-loja {
+  width: 80px;
+  height: 80px;
+  border: 3px solid transparent;
+  border-radius: 9999px;
+  background:
+    linear-gradient(var(--brand-primary), var(--brand-primary)) padding-box,
+    /* A ordem não segue a progressão quente→fria contínua do Instagram,
+       e é ela, não os valores de hex, que a §9 do guia protege. */
+    conic-gradient(
+      from 180deg,
+      var(--danger) 0%,
+      var(--brand-accent-terracota) 25%,
+      var(--brand-primary) 55%,
+      var(--brand-gradient-end) 85%,
+      var(--danger) 100%
+    )
+    border-box;
+  box-shadow: inset 0 0 0 3px #ffffff;
+  color: #ffffff;
+  font-size: 28px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.sala-real .tela-entrada-arroba .nome-da-loja {
+  color: #111111;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.sala-real .tela-entrada-arroba .recado-do-cabecalho {
+  color: #555555;
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+.sala-real .tela-entrada-arroba .entrada {
+  width: 100%;
+  flex: 1;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px 0 32px;
+}
+
+.sala-real .tela-entrada-arroba .entrada > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.sala-real .tela-entrada-arroba .titulo-da-entrada {
+  color: #111111;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.sala-real .tela-entrada-arroba .apoio-da-entrada {
+  max-width: 320px;
+  margin: 0 auto;
+  color: #262626;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.sala-real .tela-entrada-arroba .campo {
+  height: 56px;
+  padding: 12px 20px;
+  border: 3px solid var(--brand-soft-border);
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #111111;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* Navegador sem `color-mix` descarta a declaração inteira, e a borda
+   transparente sobrevive: sem esta guarda o campo fica sem fundo e sem
+   contorno, e some da tela. O par sólido acima é o que ele mostra. */
+@supports (color: color-mix(in srgb, white 50%, black)) {.sala-real .tela-entrada-arroba .campo {
+    border-color: transparent;
+    /* 90deg porque o campo é largo e baixo: na diagonal a última cor
+       vira um bloco chapado na ponta direita. */
+    background:
+      linear-gradient(#ffffff, #ffffff) padding-box,
+      linear-gradient(
+          90deg,
+          color-mix(in srgb, var(--brand-accent-terracota) 88%, #ffffff) 0%,
+          color-mix(in srgb, var(--brand-primary) 78%, #ffffff) 52%,
+          color-mix(in srgb, var(--brand-gradient-end) 82%, #ffffff) 100%
+        )
+        border-box;
+  }
+
+}
+
+/* O cinza de apoio é do tema escuro e mede 2,55:1 sobre este branco. Este
+   recado é o fim da linha de quem não tem carrinho, e precisa ser lido. */
+.sala-real .tela-entrada-arroba .aviso {
+  color: var(--text-muted);
+}
+
+.sala-real .tela-entrada-arroba .campo::placeholder {
+  /* Cinza mais claro que ainda passa no contraste AA sobre branco. */
+  color: #767676;
+}
+
+/* A borda engrossa em vez de virar anel porque `outline` só aceita cor
+   sólida. O padding cede os 2px que a borda ganha, senão o texto pula. */
+.sala-real .tela-entrada-arroba .campo:focus {
+  outline: none;
+  border-width: 5px;
+  padding: 10px 18px;
+}
+
+/* Engrossar 2px sem trocar de cor não se enxerga navegando por teclado.
+   O anel entra só no foco por teclado, então o clique de mouse continua
+   com a borda sozinha. */
+.sala-real .tela-entrada-arroba .campo:focus-visible {
+  outline: 3px solid var(--brand-primary-pressed);
+  outline-offset: 3px;
+}
+
+.sala-real .tela-entrada-arroba .botao-primario {
+  height: 52px;
+  font-size: 16px;
+}
+
+/* O degrau 2 nasceu na sacola, que é tela escura, e a porta de entrada é
+   branca: sem repintar aqui, o cinza de apoio dele mede 2,55:1 sobre
+   branco e o cartão vira uma mancha escura no meio da tela. */
+.sala-real .tela-entrada-arroba .resgate-na-entrada {
+  gap: 12px;
+}
+
+.sala-real .tela-entrada-arroba .resgate-da-sacola,
+.sala-real .tela-entrada-arroba .resgate-aberto .botao-secundario,
+.sala-real .tela-entrada-arroba .campo-do-resgate {
+  color: #262626;
+  border-color: var(--brand-soft-border);
+}
+
+.sala-real .tela-entrada-arroba .resgate-aberto {
+  background: var(--brand-softest);
+  border: 1px solid var(--brand-soft-border);
+}
+
+.sala-real .tela-entrada-arroba .resgate-aberto input {
+  background: #ffffff;
+  border-color: var(--brand-soft-border);
+  color: #111111;
+}
+
+.sala-real .tela-entrada-arroba .apoio-do-resgate,
+.sala-real .tela-entrada-arroba .botao-discreto {
+  color: #555555;
+}
+
+/* Texto escuro, e não branco: sobre este rosa claro o branco não passa
+   no contraste AA. */
+.sala-real .tela-entrada-arroba .botao-primario:disabled {
+  background: var(--brand-soft-strong);
+  color: #8a4b77;
+}
+
+.sala-real .tela-entrada-arroba .entrada > .selo-de-privacidade {
+  max-width: 320px;
+  margin: 8px auto 0;
+  text-align: center;
+  color: #262626;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.sala-real .tela-entrada-arroba .rodape {
+  color: #6b6b7a;
+  font-size: 12px;
+}

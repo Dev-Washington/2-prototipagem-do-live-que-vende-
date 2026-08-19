@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><title>conferência da barra</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/modelo-3.css">
+<style>body{background:#E9EDF3;margin:0;padding:14px;display:flex;flex-direction:column;gap:14px}
+.caixa{position:relative;width:430px;height:110px;background:#fff;border-radius:14px}
+.rot{font:700 11px/1 system-ui;color:#475569;margin-bottom:6px}
+.m3-barra{bottom:14px}</style></head>
+<body>
+<div id="saida"></div>
+<script src="js/dados.js"></script><script src="js/comum.js"></script><script src="js/modelo-3.js"></script>
+<script>
+  /* Sem parâmetro: as cinco posições lado a lado, para conferir a geometria.
+     Com ?clique=perfil: uma barra só, no estado inicial, e um clique de
+     verdade disparado nela — é assim que se confere que o ouvinte roda e que
+     a marca de fato anda, e não só que o CSS sabe posicioná-la. */
+  const alvo = new URLSearchParams(location.search).get('clique');
+  const saida = document.getElementById('saida');
+
+  if (!alvo) {
+    saida.innerHTML = ABAS_M3.map(a =>
+      `<div><div class="rot">--i em “${a.id}”</div><div class="caixa">${m3Barra(a.id)}</div></div>`).join('');
+  } else {
+    saida.innerHTML = `<div><div class="rot">clique disparado em “${alvo}”</div><div class="caixa">${m3Barra()}</div></div>`;
+    const botao = saida.querySelector(`[data-valor="${alvo}"]`);
+    if (botao) botao.click();
+    saida.insertAdjacentHTML('beforeend', `<div class="rot">ESTADO.aba = ${ESTADO.aba} · --i = ${saida.querySelector('.m3-barra').style.getPropertyValue('--i')}</div>`);
+  }
+</script>
+</body></html>

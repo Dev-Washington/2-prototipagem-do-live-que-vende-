@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modelo 3 · BeHancer</title>
+<meta name="description" content="A jornada da cliente no modelo 3: a Sala com cara de aplicativo, barra escura flutuando na base.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/modelo-3.css">
+<link rel="stylesheet" href="css/apresentacao.css">
+</head>
+<body class="apresentacao">
+
+<div class="topo-pagina">
+  <div class="envelope topo-linha">
+    <a class="topo-marca" href="index.html">
+      <strong>Modelo 3 · BeHancer</strong>
+      <span>Montado sobre referências de UX/UI do Behance · em desenho, tela a tela</span>
+    </a>
+    <nav class="topo-links">
+      <a class="topo-link" href="index.html">Início</a>
+      <a class="topo-link" href="comparativo.html">Comparativo</a>
+      <a class="topo-link" href="modelo-1.html" data-modelo-link="modelo-1.html">Front Atual</a>
+      <a class="topo-link" href="modelo-2.html" data-modelo-link="modelo-2.html">Modelo 2</a>
+      <a class="topo-link topo-link-ativo" href="modelo-3.html">Modelo 3</a>
+    </nav>
+  </div>
+</div>
+
+<main class="envelope fluxo">
+  <nav class="trilha" data-trilha aria-label="Telas da jornada"></nav>
+
+  <div class="palco-coluna">
+    <div class="palco-cabecalho">
+      <h2 data-titulo-tela></h2>
+      <p data-apoio-tela></p>
+    </div>
+
+    <div class="palco" data-palco></div>
+
+    <div class="controles">
+      <button class="controle" type="button" data-anterior aria-label="Tela anterior">‹</button>
+      <span class="contador" data-contador></span>
+      <button class="controle" type="button" data-proxima aria-label="Próxima tela">›</button>
+    </div>
+
+    <p class="dica-teclado">
+      <kbd>←</kbd> <kbd>→</kbd> navegam · <kbd>Home</kbd> <kbd>End</kbd> vão ao começo e ao fim ·
+      trocar de modelo no topo mantém a tela atual
+    </p>
+  </div>
+</main>
+
+<footer class="envelope pe-pagina">
+  <span>Não afiliado à Meta ou ao Instagram.</span>
+  <a href="comparativo.html">Ver os três lado a lado</a>
+  <span class="credito-rodape">
+    Referências de UX/UI que deram forma a este modelo, publicadas no Behance:
+    <a href="https://www.behance.net/gallery/251688415/Urban-Threads-Fashion-E-Commerce-Web-App-Design" target="_blank" rel="noopener">Urban Threads</a>, de Abdullah Sajol e Md Saidur ·
+    <a href="https://www.behance.net/gallery/240420607/Myclass-UX-UI-Mobile-App" target="_blank" rel="noopener">Myclass</a>, de PixellCode, Mahmoud Essam e Usf Satoor ·
+    <a href="https://www.behance.net/gallery/253700747/WeRate-Discover-Review-Earn-UX-Case-Study" target="_blank" rel="noopener">WeRate</a>, de Md Sakibur Hasan, ILmix Design Agency, UI Mahi, UI Nuruzzaman e UI Sabbir.
+    Mais dois pins do Pinterest, de autoria não identificada:
+    <a href="https://br.pinterest.com/pin/25684660370421610/" target="_blank" rel="noopener">o cartão de pagamento</a> e
+    <a href="https://br.pinterest.com/pin/420945896446485691/" target="_blank" rel="noopener">o estilo da página</a>.
+  </span>
+</footer>
+
+<script src="js/dados.js"></script>
+<script src="js/comum.js"></script>
+<script src="js/modelo-3.js"></script>
+<script src="js/app.js"></script>
+<script>montarFluxo(3, [TELA_REFERENCIAS], [TELA_APP]);</script>
+</body>
+</html>

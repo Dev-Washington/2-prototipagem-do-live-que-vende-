@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Live que Vende · os três modelos da Sala</title>
+<meta name="description" content="As quinze telas da jornada da cliente, com os três modelos da Sala lado a lado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/apresentacao.css">
+</head>
+<body class="apresentacao">
+
+<div class="topo-pagina">
+  <div class="envelope topo-linha">
+    <a class="topo-marca" href="index.html">
+      <strong>Live que Vende</strong>
+      <span>A Sala de hoje e os desenhos propostos</span>
+    </a>
+    <nav class="topo-links">
+      <a class="topo-link topo-link-ativo" href="index.html">Início</a>
+      <a class="topo-link" href="comparativo.html">Comparativo</a>
+      <a class="topo-link" href="modelo-1.html">Front Atual</a>
+      <a class="topo-link" href="modelo-2.html">Modelo 2</a>
+      <a class="topo-link" href="modelo-3.html">Modelo 3</a>
+    </nav>
+  </div>
+</div>
+
+<header class="envelope capa">
+  <div class="capa-sobrenome">
+    <span>Protótipo visual</span>
+    <span>Sala da live</span>
+    <span>Agosto de 2026</span>
+  </div>
+  <h1>A Sala de hoje, <em>e os caminhos possíveis</em></h1>
+  <p>
+    As quinze telas da jornada da cliente, do @ na porta de entrada ao pedido entregue.
+    O <strong>modelo 1 é o app de verdade</strong> — o mesmo DOM e o mesmo CSS de
+    <code>apps/sala</code>. O <strong>modelo 2 é o desenho já feito</strong>, o dos arquivos
+    <code>.dc.html</code>, e o <strong>modelo 3 está sendo desenhado do zero</strong>, tela a
+    tela. Mesmos preços, mesmas peças, mesmos pedidos nos três: o que muda é a estrutura.
+  </p>
+</header>
+
+<main class="envelope">
+
+  <div class="cartas">
+    <a class="carta" href="comparativo.html">
+      <span class="carta-selo">Para apresentar</span>
+      <h3>Comparativo</h3>
+      <p>As quinze telas, uma por faixa, com os três lado a lado. É a página para mostrar a alguém e pedir uma escolha.</p>
+      <span class="carta-pe">Ver as 45 telas →</span>
+    </a>
+    <a class="carta" href="modelo-1.html">
+      <span class="carta-selo">Modelo 1 · o que existe</span>
+      <h3>Front Atual</h3>
+      <p>O app como ele é hoje, com o <code>estilos.css</code> de verdade. Não é proposta: é a régua contra a qual as outras se medem.</p>
+      <span class="carta-pe">Percorrer o fluxo →</span>
+    </a>
+    <a class="carta" href="modelo-2.html">
+      <span class="carta-selo">Modelo 2 · o desenho anexado</span>
+      <h3>Feito na mão</h3>
+      <p>O desenho dos arquivos <code>.dc.html</code>: a live é o chão e o fluxo acontece em camadas que sobem sobre ela, com a ação fixa na base.</p>
+      <span class="carta-pe">Percorrer o fluxo →</span>
+    </a>
+    <a class="carta" href="modelo-3.html">
+      <span class="carta-selo">Modelo 3 · as quinze telas</span>
+      <h3>BeHancer</h3>
+      <p>Desenhado do zero: estudado e feito à base de protótipos e ideias de designers de UX &amp; UI publicados no Behance.</p>
+      <span class="carta-pe">Percorrer as 15 telas · e usar a 16 →</span>
+    </a>
+  </div>
+
+  <section class="quadro">
+    <h2>O que muda de um para o outro</h2>
+    <table class="tabela-modelos">
+      <thead>
+        <tr><th>Eixo</th><th>Modelo 1 · Front Atual</th><th>Modelo 2 · Feito na mão</th><th>Modelo 3 · BeHancer</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>O que é</th>
+          <td>O app de hoje, DOM e CSS reais</td>
+          <td>O desenho dos <code>.dc.html</code> anexados</td>
+          <td>Desenho novo, feito do zero</td>
+        </tr>
+        <tr>
+          <th>Estrutura</th>
+          <td>Vitrine clara ao fundo, camadas que sobem sobre ela</td>
+          <td>Camada branca sobre o escuro da live</td>
+          <td>Página branca inteira; o catálogo abre pela peça que está na câmera</td>
+        </tr>
+        <tr>
+          <th>Ação primária</th>
+          <td>Fixa na base da camada</td>
+          <td>Fixa na base, largura total</td>
+          <td>Abas fixas na base; o campo de código ainda sem casa</td>
+        </tr>
+        <tr>
+          <th>Onde se está</th>
+          <td>Pelo título da camada</td>
+          <td>Pelo título da camada</td>
+          <td>Pelo círculo que desliza até a aba tocada</td>
+        </tr>
+        <tr>
+          <th>Listas longas</th>
+          <td>Rolam dentro da camada</td>
+          <td>Rolam dentro da camada</td>
+          <td>Rolam na página, por baixo da barra</td>
+        </tr>
+        <tr>
+          <th>Forma</th>
+          <td>Cantos 24px, gradiente de dois tons</td>
+          <td>Cantos 22px, pílulas, gradiente de três tons</td>
+          <td>Tudo em pílula, cantos 999px, gradiente de três tons</td>
+        </tr>
+        <tr>
+          <th>Fonte</th>
+          <td>Pilha de sistema, zero webfont</td>
+          <td>DM Sans</td>
+          <td>DM Sans</td>
+        </tr>
+        <tr>
+          <th>Aposta</th>
+          <td>Nunca tirar a cliente da live</td>
+          <td>A mesma da Sala, com acabamento mais caprichado</td>
+          <td>Parecer aplicativo, não página dentro do Instagram</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>As quinze telas</h2>
+    <table class="tabela-modelos">
+      <thead><tr><th>#</th><th>Tela</th><th>O que é</th></tr></thead>
+      <tbody id="lista-telas"></tbody>
+    </table>
+
+    <div class="aviso">
+      <strong>Doze coisas para saber antes de apresentar</strong>
+      <b>O modelo 1 não é desenho meu.</b> O DOM veio dos componentes de <code>apps/sala/src</code>
+      e o estilo é o <code>estilos.css</code> do app, apenas escopado em <code>.sala-real</code>
+      para não vazar na página. Se algo ali parecer errado, é o app que está assim.<br><br>
+      <b>O Front Atual tem menos telas do que o desenho.</b> Não existe “Frete”, “Pix Enviado”,
+      “Cartão Aprovado” nem “Detalhe do Pedido” como telas separadas: são estados dentro do
+      cadastro, do pagamento e dos pedidos. Nas faixas correspondentes, o modelo 1 mostra o
+      componente real naquele estado.<br><br>
+      <b>E tem menos estados de pedido.</b> O app só escreve “Aguardando pagamento”,
+      “Pagamento confirmado”, “Enviado” e “Cancelado”. Os “Separando” e “Entregue” que o
+      modelo 2 mostra <em>não existem no sistema hoje</em> — se a escolha recair sobre ele,
+      isso vira trabalho de backend, não de tela.<br><br>
+      <b>As descrições das peças são texto de encher.</b> Cada uma das sete tem a sua na
+      tela de produto, escritas para o protótipo não ter buraco — não vieram do catálogo da
+      loja. Valem o mesmo que as fotos e os nomes: servem para mostrar a tela, não o produto.<br><br>
+      <b>As fotos são de exemplo.</b> Os três modelos usam as quatro imagens de
+      <code>modelos/assets/pecas/</code> — dois moletons pretos (frente e costas), um vermelho e
+      um jeans — distribuídas pelos sete códigos do catálogo. <b>Fora o A6, os nomes das peças
+      não batem com as fotos</b> (a “calça wide leg pesponto branco” aparece como jeans, mas o
+      “conjunto tricot caramelo” aparece como moletom vermelho): as imagens entraram
+      para ver o desenho com foto de verdade, não para casar com o catálogo. Trocar cada peça
+      pela sua foto é mexer só no <code>ARQUIVO_POR_CODIGO</code>, no <code>dados.js</code>.
+      O QR do Pix vem do Mercado Pago em tempo real; no lugar dele há um aviso.<br><br>
+      <b>A tela 16 do modelo 3 mexe em dado de verdade.</b> Ela é o aparelho para usar como
+      cliente: o que for guardado na sacola fica guardado, e o que for escrito no cadastro
+      fica escrito — para as outras faixas e para o comparativo também, que leem a mesma
+      sacola. Antes de mostrar a alguém, tocar em <b>recomeçar do @</b>, na linha acima do
+      aparelho: volta a sacola de fábrica, limpa o cadastro e leva à porta de entrada.<br><br>
+      <b>Na lista de pedidos do modelo 3, só o #4822 abre.</b> O detalhe monta os itens a
+      partir da sacola, e é a única compra que tem peças no protótipo. Os outros quatro
+      pedidos aparecem com estado, valor e rastreio, mas não são clicáveis — abrir todos no
+      mesmo detalhe mostraria o pedido errado. Pelo mesmo motivo, mexer na sacola muda o
+      total do #4822 nas duas telas.<br><br>
+      <b>A tela de pagamento recusado é proposta.</b> O app hoje só escreve “Aguardando
+      pagamento” e “Cancelado” — não existe uma tela que explique a recusa nem que ofereça
+      trocar para o Pix. O motivo mostrado (“o banco não autorizou”) é o caso mais comum, e a
+      operadora de fato não conta o motivo para a loja; mas o texto é meu, não do sistema.<br><br>
+      <b>O cartão do modelo 3 é um desenho, não um formulário de pagamento.</b> Dá para
+      digitar, o número se formata sozinho, a bandeira aparece pelo prefixo e o cartão gira
+      para mostrar o CVC — mas <em>nada é enviado, validado ou guardado</em>. Não há conferência
+      de dígito, de validade nem de bandeira real. Numa versão de verdade esses campos seriam
+      do Mercado Pago, e os números não passariam por aqui. Não use a tela para digitar um
+      cartão seu numa demonstração em tela compartilhada.<br><br>
+      <b>O total do modelo 3 na faixa “Frete e Total” pode não bater com os outros dois.</b>
+      Não é erro de conta: naquela tela o modelo 3 já escolhe a forma de pagamento, então com
+      Pix ele mostra os 5% abatidos (R$ 638,97), enquanto os modelos 1 e 2 ainda mostram o
+      total cheio (R$ 672,60) e só descontam na tela seguinte. O desconto é o mesmo
+      <code>DESCONTO_PIX</code> que já valia para o pedido do histórico.<br><br>
+      <b>A sacola com prazo é proposta, e o número é chutado.</b> O app tem reserva com
+      prazo em um lugar só: o pedido de Pix não pago, que expira em 30 minutos — está no
+      histórico como “Reserva expirada em 30 min”. Um relógio na <em>sacola</em>, de 15
+      minutos, não existe hoje. O valor está em <code>MINUTOS_DE_RESERVA</code>, no
+      <code>dados.js</code>: baixe para 1 se quiser ver a contagem terminar na hora.<br><br>
+      <b>O modelo 3 propõe uma coisa que o sistema não tem.</b> O
+      seletor de <em>cor</em> veio das referências do Behance e não existe hoje: as peças só
+      têm variação de tamanho. Na tela ele funciona — na peça aberta troca a foto e a tira de
+      miniaturas, e na sacola o botão <em>Editar</em> troca cor e tamanho de um item já
+      guardado —, mas quem guarda as cores é o <code>dados.js</code>,
+      não o sistema. Está ali porque foi pedido para o desenho ficar fiel à
+      referência — mas, se o modelo 3 for o escolhido, ele vira trabalho de backend antes de
+      virar tela.
+    </div>
+
+    <h2>De onde vem o modelo 3</h2>
+    <div class="creditos">
+      <strong>O BeHancer foi montado sobre referências de UX/UI publicadas no Behance</strong>
+      <p>
+        Ele não saiu de uma folha em branco. Os protótipos e as ideias de estrutura que
+        deram forma a ele — a página branca com muito ar, a barra escura flutuando na base,
+        a composição centrada — vêm de trabalhos de designers publicados no Behance.
+        <b>É daí que vem o nome.</b> Os três projetos usados como referência:
+      </p>
+      <ul id="lista-referencias"></ul>
+      <p>
+        Além deles, <b>dois pins do Pinterest</b>: um deu a forma do cartão de crédito da tela
+        de pagamento, o outro o estilo geral das telas. Pin não é autoria — o Pinterest
+        republica o desenho de outra pessoa e não diz de quem é —, então eles entram pelo link
+        e pela finalidade:
+      </p>
+      <ul id="lista-pins"></ul>
+      <p>
+        Nenhum arquivo desses projetos foi copiado para cá: o HTML e o CSS do modelo 3 são
+        escritos do zero, com os dados, os textos e as cores da Live que Vende. O que veio
+        de lá é referência visual e de estrutura. <b>Se o modelo 3 for o escolhido, vale
+        conferir os direitos de cada projeto antes de levar o desenho para produção.</b>
+        <br><a href="modelo-3.html#referencias">Ver a página 00 do modelo 3, com as janelas, os pins e os links →</a>
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="envelope pe-pagina">
+  <span>Não afiliado à Meta ou ao Instagram.</span>
+  <a href="comparativo.html">Comparativo</a>
+  <a href="modelo-1.html">Front Atual</a>
+  <a href="modelo-2.html">Modelo 2</a>
+  <a href="modelo-3.html">Modelo 3</a>
+</footer>
+
+<script src="js/dados.js"></script>
+<script>
+  document.getElementById('lista-telas').innerHTML = TELAS.map((tela, i) =>
+    `<tr><th>${String(i + 1).padStart(2, '0')}</th><td>${tela.titulo}</td><td>${tela.apoio}</td></tr>`).join('');
+
+  document.getElementById('lista-referencias').innerHTML = REFERENCIAS.map(r =>
+    `<li><a href="${r.link}" target="_blank" rel="noopener">${r.titulo}</a><span>${r.autoria}</span></li>`).join('');
+
+  document.getElementById('lista-pins').innerHTML = REFERENCIAS_PIN.map(r =>
+    `<li><a href="${r.link}" target="_blank" rel="noopener">${r.titulo}</a><span>${r.onde}</span></li>`).join('');
+</script>
+</body>
+</html>

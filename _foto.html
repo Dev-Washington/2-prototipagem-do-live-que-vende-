@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>foto de conferência</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/sala-real.css">
+<link rel="stylesheet" href="css/modelo-1.css">
+<link rel="stylesheet" href="css/modelo-2.css">
+<link rel="stylesheet" href="css/modelo-3.css">
+<link rel="stylesheet" href="css/apresentacao.css">
+<style>
+  html, body { margin: 0; padding: 0; background: #E9EDF3; }
+  .linha { display: flex; gap: 10px; padding: 10px; }
+  .col { display: flex; flex-direction: column; gap: 4px; }
+  .rot { font: 700 11px/1 system-ui; color: #475569; }
+  .moldura { box-shadow: none; border-radius: 0; }
+</style>
+</head>
+<body>
+<div class="linha" id="linha"></div>
+<script src="js/dados.js"></script>
+<script src="js/comum.js"></script>
+<script src="js/modelo-1.js"></script>
+<script src="js/modelo-2.js"></script>
+<script src="js/modelo-3.js"></script>
+<script src="js/app.js"></script>
+<script>
+  const busca = new URLSearchParams(location.search);
+  const tela = busca.get('t') || 'catalogo';
+  /* `p=cartao` e `n=3` forçam o estado do pagamento, para fotografar o outro
+     lado da escolha sem depender de clicar. */
+  if (busca.get('f')) ESTADO.filtro = busca.get('f');
+  if (busca.get('e')) ESTADO.entrega = busca.get('e');
+  if (busca.get('p')) ESTADO.pagamento = busca.get('p');
+  if (busca.get('n')) ESTADO.parcelas = Number(busca.get('n'));
+  document.getElementById('linha').innerHTML = MODELOS.map(m => `
+    <div class="col">
+      <div class="rot">MODELO ${m.id} · ${m.nome}</div>
+      <div class="moldura" style="--escala:1"><div class="moldura-palco">${montarTela(m.id, tela)}</div></div>
+    </div>`).join('');
+
+  /* As telas vivas: sem isto, filtro e abas não respondem e a foto mente
+     sobre o que a página faz. */
+  ligarInteracoes();
+
+  /* ?c=perfil dispara um clique de verdade naquele gatilho, para fotografar
+     o depois do toque — inclusive nos casos que não redesenham a tela. */
+  const clique = busca.get('c');
+  if (clique) {
+    const botao = document.querySelector(`[data-valor="${clique}"]`);
+    if (botao) botao.click();
+  }
+</script>
+</body>
+</html>
